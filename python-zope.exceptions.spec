@@ -15,11 +15,12 @@ Source0:	https://pypi.python.org/packages/8f/b7/eba9eca6841fa47d9a30f71a602be761
 URL:		http://www.zope.org/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
-%if %{with python}
+%if %{with python2}
 BuildRequires:	python >= 1:2.6
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
+BuildRequires:	python3
 BuildRequires:	python3-setuptools
 %endif
 %pyrequires_eq	python-modules
@@ -68,14 +69,18 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%if %{with python2}
 %files
 %defattr(644,root,root,755)
 %{py_sitedir}/zope/exceptions
 %{py_sitedir}/zope.exceptions-*.egg-info
 %{py_sitedir}/zope.exceptions-*-nspkg.pth
+%endif
 
+%if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
 %{py3_sitedir}/zope/exceptions
 %{py3_sitedir}/zope.exceptions-*.egg-info
 %{py3_sitedir}/zope.exceptions-*-nspkg.pth
+%endif
