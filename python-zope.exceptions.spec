@@ -71,6 +71,17 @@ Ten pakiet zawiera wyjątki oraz implementacje wyjątków, mających na
 tyle ogólne zastosowanie, że nie należą do żadnego z pakietów Zope
 specyficznych dla aplikacji.
 
+%package apidocs
+Summary:	API documentation for Python zope.exceptions module
+Summary(pl.UTF-8):	Dokumentacja API modułu Pythona zope.exceptions
+Group:		Documentation
+
+%description apidocs
+API documentation for Python zope.exceptions module.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API modułu Pythona zope.exceptions.
+
 %prep
 %setup -q -n zope.exceptions-%{version}
 
@@ -93,7 +104,7 @@ specyficznych dla aplikacji.
 
 %if %{with doc}
 %{__make} -C docs html \
-	SPHINXBUILD=sphinx-build-2
+	SPHINXBUILD=sphinx-build
 %endif
 
 %install
@@ -129,4 +140,10 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/zope/exceptions
 %{py3_sitedir}/zope.exceptions-%{version}-py*.egg-info
 %{py3_sitedir}/zope.exceptions-%{version}-py*-nspkg.pth
+%endif
+
+%if %{with doc}
+%defattr(644,root,root,755)
+%files apidocs
+%doc docs/_build/html/{_static,*.html,*.js}
 %endif
