@@ -12,7 +12,7 @@ Summary:	Zope Exceptions
 Summary(pl.UTF-8):	Zope Exceptions - wyjątki Zope
 Name:		python-%{module}
 Version:	4.3
-Release:	2
+Release:	3
 License:	ZPL v2.1
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zope-exceptions/
@@ -44,6 +44,7 @@ BuildRequires:	python3-repoze.sphinx.autointerface
 Requires:	python-modules >= 1:2.7
 Requires:	python-zope-base
 Obsoletes:	Zope-Exceptions
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -114,13 +115,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with python2}
 %py_install \
-	--install-purelib=%{py_sitedir}
+	--install-purelib=%{py_sitescriptdir}
 %py_postclean
 %endif
 
 %if %{with python3}
 %py3_install \
-	--install-purelib=%{py3_sitedir}
+	--install-purelib=%{py3_sitescriptdir}
 %endif
 
 %clean
@@ -130,18 +131,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES.rst COPYRIGHT.txt LICENSE.txt README.rst
-%{py_sitedir}/zope/exceptions
-%{py_sitedir}/zope.exceptions-%{version}-py*.egg-info
-%{py_sitedir}/zope.exceptions-%{version}-py*-nspkg.pth
+%{py_sitescriptdir}/zope/exceptions
+%{py_sitescriptdir}/zope.exceptions-%{version}-py*.egg-info
+%{py_sitescriptdir}/zope.exceptions-%{version}-py*-nspkg.pth
 %endif
 
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
 %doc CHANGES.rst COPYRIGHT.txt LICENSE.txt README.rst
-%{py3_sitedir}/zope/exceptions
-%{py3_sitedir}/zope.exceptions-%{version}-py*.egg-info
-%{py3_sitedir}/zope.exceptions-%{version}-py*-nspkg.pth
+%{py3_sitescriptdir}/zope/exceptions
+%{py3_sitescriptdir}/zope.exceptions-%{version}-py*.egg-info
+%{py3_sitescriptdir}/zope.exceptions-%{version}-py*-nspkg.pth
 %endif
 
 %if %{with doc}
