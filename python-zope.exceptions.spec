@@ -9,13 +9,14 @@
 Summary:	Zope Exceptions
 Summary(pl.UTF-8):	Zope Exceptions - wyjątki Zope
 Name:		python-%{module}
-Version:	4.5
-Release:	3
+# keep 4.x here for python2 support
+Version:	4.6
+Release:	1
 License:	ZPL v2.1
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zope-exceptions/
 Source0:	https://files.pythonhosted.org/packages/source/z/zope.exceptions/zope.exceptions-%{version}.tar.gz
-# Source0-md5:	e03b67ab2ac46591fde926b0044a6636
+# Source0-md5:	606505125f5d2b7484f300d1530316c3
 URL:		https://www.zope.org/
 %if %{with python2}
 BuildRequires:	python >= 1:2.7
@@ -104,6 +105,7 @@ Dokumentacja API modułu Pythona zope.exceptions.
 %endif
 
 %if %{with doc}
+PYTHONPATH=$(pwd)/src \
 %{__make} -C docs html \
 	SPHINXBUILD=sphinx-build
 %endif
