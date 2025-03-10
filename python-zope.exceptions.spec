@@ -11,7 +11,7 @@ Summary(pl.UTF-8):	Zope Exceptions - wyjątki Zope
 Name:		python-%{module}
 # keep 4.x here for python2 support
 Version:	4.6
-Release:	1
+Release:	2
 License:	ZPL v2.1
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zope-exceptions/
