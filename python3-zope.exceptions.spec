@@ -66,7 +66,7 @@ Dokumentacja API modułu Pythona zope.exceptions.
 %if %{with doc}
 PYTHONPATH=$(pwd)/src \
 %{__make} -C docs html \
-	SPHINXBUILD=sphinx-build
+	SPHINXBUILD=sphinx-build-3
 %endif
 
 %install
