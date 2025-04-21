@@ -73,7 +73,6 @@ PYTHONPATH=$(pwd)/src \
 rm -rf $RPM_BUILD_ROOT
 
 %py3_install
-#	--install-purelib=%{py3_sitescriptdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
